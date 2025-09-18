@@ -2,9 +2,10 @@ package model;
 
 import java.util.HashMap;
 
-public class Client extends Personne {
+public class Client extends GeneralUser {
     private String idClient;
     private HashMap<String, Compte> comptes;
+
 
     // Constructor
     public Client(String nom, String prenom, String email, String motDePasse, String idClient) {
@@ -37,5 +38,9 @@ public class Client extends Personne {
 
     public Compte getCompte(String numeroCompte) {
         return comptes.get(numeroCompte);
+    }
+
+    public void login (string email, string motDePass){
+        if(email && )
     }
 }

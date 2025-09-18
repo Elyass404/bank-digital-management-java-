@@ -48,9 +48,11 @@ public abstract class GeneralUser {
         this.motDePasse = motDePasse;
     }
 
+
     // toString method
     @Override
     public String toString() {
         return nom + " " + prenom + " (" + email + ")";
     }
+
 }
