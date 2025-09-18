@@ -19,7 +19,7 @@ public class Main {
         compte.deposer(100);
 
         // retirer montant
-        compte.retirer( 101);
+        compte.retirer( 100);
 
         // Create a transaction
         Transaction transaction = new Transaction(
@@ -30,7 +30,7 @@ public class Main {
         compte.ajouterTransaction(transaction);
 
         // Print account balance and transaction history
-        System.out.println("yoyr Balance balance is: " + compte.getSolde());
+        System.out.println("Votre balance est: " + compte.getSolde());
         for (Transaction t : compte.getHistoriqueTransactions()) {
             System.out.println(t);
         }

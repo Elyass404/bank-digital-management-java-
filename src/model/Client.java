@@ -39,8 +39,4 @@ public class Client extends GeneralUser {
     public Compte getCompte(String numeroCompte) {
         return comptes.get(numeroCompte);
     }
-
-    public void login (string email, string motDePass){
-        if(email && )
-    }
 }

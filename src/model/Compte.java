@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 
 public class Compte {
@@ -44,12 +45,21 @@ public class Compte {
     public boolean retirer(double montant) {
         if (montant > 0 && solde >= montant) {
             solde -= montant;
-            System.out.println("tu retire :" + montant + "Dirhams");
+            Transaction transaction = new Transaction(
+                    "T" + System.currentTimeMillis(), "Retrait", montant, LocalDate.now(),
+                    numeroCompte, null
+            );
+            ajouterTransaction(transaction);
+            System.out.println("Vous avez retire le montant de: " + montant );
             return true;
-        }else{
-            System.out.println("votre solde est insufisant pour cette operation.");
+        }else if(montant < 0 ) {
+            System.out.println("il faut entrer un montant positive! Ressayer autre fois");
+            return false;
+        }else if (solde < montant) {
+            System.out.println("Votre solde est insuffissant");
             return false;
         }
+        return false;
     }
 
     // Add transaction to history
