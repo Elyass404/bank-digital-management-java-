@@ -39,6 +39,15 @@ public class Gestionnaire extends GeneralUser {
         }
     }
 
+    public void modifierInfoClient(Client client,String nom, String prenom, String email, String motDepass ) {
+        if(nom != null){client.setNom(nom);}
+        if(prenom != null){client.setPrenom(prenom);}
+        if(email != null){client.setEmail(email);}
+        if(motDepass != null){client.setMotDePasse(motDepass);}
+
+        System.out.println("Les informations sont modifier avec succes");
+    }
+
 
 
 }
