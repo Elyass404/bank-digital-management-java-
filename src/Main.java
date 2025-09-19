@@ -1,6 +1,7 @@
 import model.Client;
 import model.Compte;
 import model.Transaction;
+import org.w3c.dom.ls.LSOutput;
 
 import java.time.LocalDate;
 
@@ -71,7 +72,7 @@ public class Main {
 
     }
 
-    
+    System.out.println("|--Bienvenue Sur YouPay Bank--|")
 
 
 }
