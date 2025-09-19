@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import utils.FichierUtils;
 
 public class Compte {
     private String numeroCompte;
@@ -62,8 +63,35 @@ public class Compte {
         return false;
     }
 
+    // Transfer to another account
+    public boolean virementVers(Compte destination, double montant) {
+        if (montant > 0 && solde >= montant) {
+            solde -= montant;
+            destination.deposer(montant);
+
+            Transaction transaction = new Transaction(
+                    "T" + System.currentTimeMillis(), "Virement", montant, LocalDate.now(),
+                    numeroCompte, destination.getNumeroCompte()
+            );
+
+            ajouterTransaction(transaction);
+            destination.ajouterTransaction(transaction);
+            return true;
+        }
+        return false;
+    }
+
+    public void enregistrerTransactionDansFichier(Transaction transaction) {
+        String chemin = "releves/" + numeroCompte + ".txt";
+        FichierUtils.ecrireDansFichier(chemin, transaction.toString());
+    }
+
     // Add transaction to history
     public void ajouterTransaction(Transaction transaction) {
         historiqueTransactions.add(transaction);
+        enregistrerTransactionDansFichier(transaction);
     }
+
+
+
 }
